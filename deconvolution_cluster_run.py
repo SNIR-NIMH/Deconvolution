@@ -38,7 +38,7 @@ usage = '''Example:
 
 Input image size is so large it will not fit into GPU memory:
 
-E.g. stitched images 8000x8000x5000 will neither fit into RAM or GPU memory, so --chunks dH dW option is needed.
+E.g. Large images 8000x8000x5000 will neither fit into RAM or GPU memory, so --chunks dH dW option is needed.
 Then the images will be split into dH x dW (height x width) overlapping chunks and each chunk will be individually serially deconvolved.
 python deconvolution_cluster_prepare.py --im /home/user/stitched_image_dir/ --o  /home/user/outputdir/ --psf psf.tif --chunks 10 10
 

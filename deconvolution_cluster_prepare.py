@@ -26,7 +26,7 @@ python deconvolution_cluster_prepare.py --d /home/user/stitched/ --o /home/user/
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='******************************************************************* \n'
-                                     'Prepare for deconvolution on Biowulf cluster in parallel. Use it for \n'
+                                     'Prepare for deconvolution on a cluster in parallel. Use it for \n'
                                                  'a folder with multiple 2D images. After running this code, it will generate \n'
                                                  'a swarm file and some json files. Run the swarm file which deconvolves \n'
                                                  'images in parallel.\n'
@@ -177,6 +177,6 @@ if __name__ == "__main__":
 
     f1.close()
     print(':============================')
-    print('Now run this on a Biowulf login node shell:')
+    print('Now run this on a login node shell:')
     print('swarm -f %s --partition=gpu --gres=gpu:k80:1  --merge-output -t 4 -g %d  --time 8:00:00' %(s, mem))
     print(':============================')
