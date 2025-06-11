@@ -59,8 +59,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='******************************************************************* \n'
                                      'Deconvolution using RAPIDSAI cuCIM (Compute Unified Device Architecture Clara IMage).\n'
                                      'Use this code for smaller size images, e.g. size 2560x2160x1200.\n'
-                                     'For larger images (such as stitched ones), use deconvolution_cluster_prepare.py \n'
-                                     'and deconvolution_cluster_run.py, which deconvolves with parallel GPUs on Biowulf cluster..\n'
+                                     'For larger images, use deconvolution_cluster_prepare.py and deconvolution_cluster_run.py,\n'
+                                     'which deconvolves with parallel GPUs on a cluster..\n'
                                      '******************************************************************* \n',
                                      formatter_class=RawDescriptionHelpFormatter)
 
