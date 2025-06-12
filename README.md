@@ -5,7 +5,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The scripts provide capability to run 2D or 3D Richardson-Lucy deconvolution on 
+The scripts provide capability to run 2D or 3D Richardson-Lucy deconvolution [1,2] on 
 TIFF images with theoretical PSF. The images can be in the order of Terabytes. Multiple GPUs can be
 used for deconvolution on a cluster.
 
@@ -178,5 +178,8 @@ Snehashis Roy - email@snehashis.roy@nih.gov
 
 <!-- REFERENCE -->
 ## References
+[1] W. H. Richardson, "Bayesian-Based Iterative Method of Image Restoration," J. Opt. Soc. Am. 62, 55-59 (1972)
+
+[2] L. B. Lucy, "An iterative technique for the rectification of observed distributions", Astronomical Journal, 79(6), 745-75 (1974)
 
 
