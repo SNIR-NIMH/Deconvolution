@@ -7,8 +7,12 @@
 
 The scripts provide capability to run 2D or 3D Richardson-Lucy deconvolution [1,2] on 
 TIFF images with theoretical PSF. The images can be in the order of Terabytes. Multiple GPUs can be
-used for deconvolution on a cluster.
+used for deconvolution on a cluster. A GUI to do the single-GPU deconvolution on a Windows/Linux desktop
+is also provided.
 
+<p float="center">
+  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/3.png" height="200" />
+</p>
 
 <!--Prerequisites -->
 ## Prerequisites for Linux
