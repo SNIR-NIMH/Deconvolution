@@ -30,6 +30,7 @@ pip install --upgrade imagecodecs
 pip install tensorflow-gpu==2.10.0
 pip install cupy-cuda11x
 pip install cucim==23.4.1
+pip install pytiff
 ```
 
 
