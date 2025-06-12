@@ -93,9 +93,7 @@ Image.MAX_IMAGE_PIXELS = 45000*45000   --> Image.MAX_IMAGE_PIXELS = 95000*95000
 ```
 
 
-[//]: <p align="center">
-[//]:   <img src="https://github.com/SNIR-NIMH/nd2totiff/blob/main/imgs/bigdata.png" height="500"/>  
-[//]: </p>
+
 
 ## Multi-GPU Deconvolution on Cluster
 On a cluster, the deconvolution can be parallelized with as many GPUs as possible over as many nodes 
@@ -148,6 +146,28 @@ according to the swarm commands. Otherwise, in a single node multi-GPU environme
 change the **--gpu 0** argument to **--gpu 0**, **--gpu 1**, .., **--gpu N**,  etc. Then simply run
 the file using GNU Parallel (or PPSS) to have all the commands run in parallel.
 
+## Example Data
+Three images along with their deconvolved results and theoretical PSF are provided. 
+The following command was used to deconvolve them,
+```
+http://hpc.nih.gov/~NIMH_MHSNIR/decon_example_data.zip
+python deconvolution3d.py --im neuronmultipolar1.tif --o neuronmultipolar1_decon.tif --psf theoretical_psf_cropped.tif --iter 18 --float --chunks 1 2
+```
+
+We generated the theoretical PSF using Fiji. 
+However, the total time and memory required for 3D deconvolution is directly proportional to the number of 
+slices of the PSF. Therefore, scaling between 1% of the maximum (65535) and the maximum showed that there
+is little information in a few top and bottom slices. Therefore, a simple manual cropping (red boxes)
+of the theoretical PSF can be used to save deconvolution time and required memory.
+
+<p float="center">
+  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/1.png" width="400" />
+  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/2.png" width="400" />   
+</p>
+
+
+
+
 <!-- NOTES -->
 ## Notes
 1. Theoretical PSF can be generated using either Fiji or Deconwolf,
@@ -163,19 +183,12 @@ We have empirically found that Deconwolf provides more accurate PSF for Widefiel
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
 
 Snehashis Roy - email@snehashis.roy@nih.gov
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- REFERENCE -->
 ## References
