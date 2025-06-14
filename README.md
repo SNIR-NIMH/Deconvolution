@@ -14,6 +14,13 @@ is also provided.
   <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/3.png" height="200" />
 </p>
 
+
+Before and after 3D deconvolution:
+<p float="center">
+  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/before_decon.png" height="300" />
+  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/after_decon.png" height="300" />
+</p>
+
 <!--Prerequisites -->
 ## Prerequisites for Linux
 We have extensively tested it on Linux with the following versions,
