@@ -17,8 +17,8 @@ is also provided.
 
 Before and after 3D deconvolution:
 <p float="center">
-  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/before_decon.png" height="300" />
-  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/after_decon.png" height="300" />
+  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/before_decon.png" height="260" />
+  <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/after_decon.png" height="260" />
 </p>
 
 <!--Prerequisites -->
