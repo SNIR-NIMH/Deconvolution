@@ -7,8 +7,8 @@
 
 The scripts provide capability to run 2D or 3D Richardson-Lucy deconvolution [1,2] on 
 TIFF images with theoretical PSF. The images can be in the order of Terabytes. Multiple GPUs can be
-used for deconvolution on a cluster. A GUI to do the single-GPU deconvolution on a Windows/Linux desktop
-is also provided.
+used for deconvolution on a cluster or a single node. A GUI to do the single-GPU deconvolution 
+on a Windows/Linux desktop is also provided.
 
 <p float="center">
   <img src="https://github.com/SNIR-NIMH/Deconvolution/blob/main/imgs/3.png" height="200" />
@@ -147,15 +147,17 @@ Optional Arguments:
                         chunk will be deconvolved in a serial manner. This is useful for large stitched images.
   --float               If the output deconvolved images are stored as 32-bit float images instead of default 16-bit unsigned
                         integer images, use --float option.
+```
 
-Example:
-python deconvolution_cluster_prepare.py --d /home/user/stitched/ --o /home/user/stitched_decon/ --psf psf.tif --n 20 --iter 25 --chunks 5 10
+Example usage to decon a folder with with 20 GPUs and 5x10 chunking (in height x width):
+```
+python deconvolution_cluster_prepare.py --d /home/user/stitched/ --o /home/user/stitched_decon/ --psf 3dpsf.tif --n 20 --iter 25 --chunks 5 10
 ```
 
 2. After generating a text file (a *swarm* in the context of a cluster), please submit the swarm to the cluster
 according to the swarm commands. Otherwise, in a single node multi-GPU environment, edit the file to
 change the **--gpu 0** argument to **--gpu 0**, **--gpu 1**, .., **--gpu N**,  etc. Then simply run
-the file using GNU Parallel (or PPSS) to have all the commands run in parallel.
+the file using GNU Parallel (or PPSS) to have all the commands run in parallel on multiple GPUs.
 
 ## Example Data
 Three images along with their deconvolved results and theoretical PSF are provided. 
