@@ -97,8 +97,8 @@ python deconvolution3d.py --im /home/user/stitched_image_dir/ --o  /home/user/ou
 ```
 
 * Number of chunks should be empirically chosen. For 3D deconvolution, more number of chunks may be required.
-* There is no limit on number of chunks or the image XY dimension. An arbitrary limit of 45000x45000 pixel dimension 
-  is added to Pillow's MAX_IMAGE_PIXELS. Please change L22 of deconvolution3d.py to accommodate bigger image size, e.g.,
+* There is no limit on number of chunks or the image XY dimension. An arbitrary limit of `45000x45000` pixel dimension 
+  is added to Pillow's MAX_IMAGE_PIXELS. Please change L22 of `deconvolution3d.py` to accommodate bigger image size, e.g.,
 ```
 Image.MAX_IMAGE_PIXELS = 45000*45000   --> Image.MAX_IMAGE_PIXELS = 95000*95000 
 ```
