@@ -13,9 +13,9 @@ import os, sys
 #os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 #import tensorflow as tf
 import copy
-import cupy as cp
-from cucim.skimage import img_as_float
-from cucim.skimage.restoration import richardson_lucy
+#import cupy as cp
+#from cucim.skimage import img_as_float
+#from cucim.skimage.restoration import richardson_lucy
 
 from skimage.io import imsave, imread
 from pytiff import Tiff
@@ -38,7 +38,7 @@ usage = '''Example:
 
 Input image size is so large it will not fit into GPU memory:
 
-E.g. Large images 8000x8000x5000 will neither fit into RAM or GPU memory, so --chunks dH dW option is needed.
+E.g. stitched images 8000x8000x5000 will neither fit into RAM or GPU memory, so --chunks dH dW option is needed.
 Then the images will be split into dH x dW (height x width) overlapping chunks and each chunk will be individually serially deconvolved.
 python deconvolution_cluster_prepare.py --im /home/user/stitched_image_dir/ --o  /home/user/outputdir/ --psf psf.tif --chunks 10 10
 
@@ -103,6 +103,9 @@ if __name__ == "__main__":
     #config = tf.compat.v1.ConfigProto()
     #config.gpu_options.allow_growth = True
     #sess = tf.compat.v1.Session(config=config)
+    import cupy as cp  # This must come after CUDA_VISIBLE_DEVICES is set, otherwise default GPU id 0 is used
+    from cucim.skimage import img_as_float
+    from cucim.skimage.restoration import richardson_lucy
     nvmlInit()
     gpuhandle = nvmlDeviceGetHandleByIndex(results.GPUID)
     mem = nvmlDeviceGetMemoryInfo(gpuhandle)
