@@ -6,9 +6,9 @@ import os, sys
 #os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 #import tensorflow as tf
 import copy
-import cupy as cp
-from cucim.skimage import img_as_float
-from cucim.skimage.restoration import richardson_lucy
+#import cupy as cp
+#from cucim.skimage import img_as_float
+#from cucim.skimage.restoration import richardson_lucy
 
 from skimage.io import imsave, imread
 from pytiff import Tiff
@@ -59,8 +59,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='******************************************************************* \n'
                                      'Deconvolution using RAPIDSAI cuCIM (Compute Unified Device Architecture Clara IMage).\n'
                                      'Use this code for smaller size images, e.g. size 2560x2160x1200.\n'
-                                     'For larger images, use deconvolution_cluster_prepare.py and deconvolution_cluster_run.py,\n'
-                                     'which deconvolves with parallel GPUs on a cluster..\n'
+                                     'For larger images (such as stitched ones), use deconvolution_cluster_prepare.py \n'
+                                     'and deconvolution_cluster_run.py, which deconvolves with parallel GPUs on Biowulf cluster..\n'
                                      '******************************************************************* \n',
                                      formatter_class=RawDescriptionHelpFormatter)
 
@@ -97,10 +97,13 @@ if __name__ == "__main__":
 
     results = parser.parse_args()
 
-
-
+    os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     os.environ['CUDA_VISIBLE_DEVICES'] = str(results.GPUID)
     print('CUDA_VISIBLE_DEVICES set to {}'.format(os.environ['CUDA_VISIBLE_DEVICES']))
+    import cupy as cp  # This must come after CUDA_VISIBLE_DEVICES is set, otherwise the default gpu id 0 will be used.
+    # This is not a problem in Biowulf because CUDA_VISIBLE_DEVICES is always set to 0 and only 1 GPU is allocated by swarm
+    from cucim.skimage import img_as_float
+    from cucim.skimage.restoration import richardson_lucy
     #config = tf.compat.v1.ConfigProto()
     #config.gpu_options.allow_growth = True
     #sess = tf.compat.v1.Session(config=config)
