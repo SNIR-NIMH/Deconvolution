@@ -54,6 +54,7 @@ def submit():
     inputdir = inputpath.get()
     outputdir = outputpath.get()
     psf = psfpath.get()
+    g = gpuid.get()
 
     n = niter.get()
 
@@ -64,7 +65,7 @@ def submit():
     # Use --atlasdir="path" --> The double quote and equal-to ensures the space in the path is respected
     # Using --atlasdir path or --atlasdir "path" does not work if there are spaces in  path, only arg equalto quote path unquote works
     cmd = 'python ' + path + ' --im="' + inputdir + '" --o="' + outputdir + '" --psf="' + psf + '" --iter ' + str(n) +\
-          ' --gpu 0 ' + ' --chunks ' + str(c) + ' ' + str(c)
+          ' --gpu ' + g + ' --chunks ' + str(c) + ' ' + str(c)
     print(cmd)
     os.system(cmd)
 
@@ -81,6 +82,7 @@ if __name__ == "__main__":
     psfpath = tk.StringVar()
     niter = tk.IntVar()
     chunks = tk.IntVar()
+    gpuid = tk.StringVar()
 
 
 
@@ -112,13 +114,16 @@ if __name__ == "__main__":
 
     niter_label = tk.Label(root, text='Number of iterations')
     chunks_label = tk.Label(root, text='Number of chunks in either x or y direction')
+    gpuid_label = tk.Label(root, text='GPU ID to use (starting from 0)')
 
 
     niter_entry = tk.Entry(root, textvariable=niter, width=10)
     chunks_entry = tk.Entry(root, textvariable=chunks, width=10)
+    gpuid_entry = tk.Entry(root, textvariable=gpuid, width=10)
 
     niter.set(12)
     chunks.set(2)
+    gpuid.set(0)
 
 
     #c = ttk.Button(root, text="find", command=doStuff)
@@ -132,13 +137,14 @@ if __name__ == "__main__":
 
     niter_label.grid(row=4,column=1, padx=60)
     chunks_label.grid(row=5, column=1, padx=60)
+    gpuid_label.grid(row=6, column=1, padx=60)
 
     niter_entry.grid(row=4, column=2, padx=60)
     chunks_entry.grid(row=5, column=2, padx=60)
+    gpuid_entry.grid(row=6, column=2, padx=60)
 
 
-
-    sub_btn.grid(row=6,column=2)
+    sub_btn.grid(row=7,column=2)
 
     # performing an infinite loop
     # for the window to display
